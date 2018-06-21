@@ -1,0 +1,53 @@
+<!-- Js code for Creating a function that returns a promise which coverts the given array of strings into
+uppercase and returns the result after n seconds, where n is length of input array -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment 13.1</title>
+</head>
+<body>
+    <script>
+     var arr= new Array();
+     var isTrue=false,n;
+        function ConvertToUpper(arr) //Creating a function with the name ConvertToUpper
+        {
+            console.log("The Uppercase values are: ");
+            console.log("------------------------------- ");
+            arr.map(function(x){
+            console.log(x.toUpperCase()); // converting the array elements to uppercase and printing them on console
+            isTrue=true;  
+            });
+            
+            console.log("\n")
+            console.log("Result of Promise: ");
+            console.log("------------------------------- ");
+          let UpperCase= new Promise(function (resolve,reject) 
+          {    
+              if(isTrue)
+              {
+                  n=arr.length;
+                  setTimeout(resolve,(n*1000),{message: 'Successfully converted to Uppercase'}); /* returning the result of promise after n seconds where n is the length of the array */
+            
+              }
+
+              else
+              {
+                  reject("Error");
+              }
+          })
+          
+        UpperCase.then(function (result)
+        {console.log(result.message) }).catch(function (result) //Printing the result of the promise
+        {
+            console.log(result);})
+
+          
+        }
+
+        ConvertToUpper(['hello','hi','something', 'trying', 'promises']); // passing the list of values to be converted to upper case
+    </script>
+</body>
+</html>
